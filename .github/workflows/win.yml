@@ -1,0 +1,19 @@
+name: Regex Windows
+
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build-and-test:
+    name: Regex Testing
+    runs-on: windows-latest
+    steps:
+      # Checkout the repository under $GITHUB_WORKSPACE.
+      - uses: actions/checkout@v1
+
+      - name: Test regex
+        run: bazel test --spawn_strategy=local --strip="never" --test_output=errors :regex --test_arg=--gtest_shuffle --test_arg=--gtest_repeat=100
