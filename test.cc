@@ -21,12 +21,12 @@ TEST(RegexTest, TestDeathOutput) {
 
   const std::string match_regex1 =
       "program: Failed while parsing and validating flags:"
-      "\?\n\?\n"
+      "\?\n?\?\n?"
       ". 'bar' must be true"
-      "\?\n\?\n"
+      "\?\n?\?\n?"
       ". 'baz' must be greater than 42";
 
-  const std::string match_regex2 = "abc\?\n\?\nabc";
+  const std::string match_regex2 = "abc\?\n?\?\n?abc";
 
   EXPECT_DEATH(
       operation1(),
